@@ -29,10 +29,10 @@ max_iter = 100;
 w_out = Wiener(K, yout);
 
 % ISRA 
-isra_out = ISRA(f, yout, max_iter);
+isra_out = ISRA(K, yout, max_iter);
 
 % RL 
-rl_out = RL(f, yout, max_iter);
+rl_out = RL(K, yout, max_iter);
 
 % Display the results 
 figure, imshow([w_out isra_out rl_out]), title('Wiener/ISRA/RL');
