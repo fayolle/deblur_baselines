@@ -54,10 +54,17 @@ max_iter = 100;
 w_out = Wiener(K, yout);
 w_out_t = deconvwnr(yout, k);
 
+% Estimate noise 
+signal_var = var(yout(:));
+nsr = estimate_noise(yout)^2/signal_var;
+w_out_nsr = Wiener(K, yout, nsr);
+w_out_nsr_t = deconvwnr(yout, k, nsr);
+
 % RL 
 rl_out = RL(K, yout, max_iter);
 rl_out_t = deconvlucy(yout, k, max_iter);
 
 % Display the results 
 figure, imshow([w_out w_out_t]), title('Wiener/Toolbox');
+figure, imshow([w_out_nsr w_out_nsr_t]), title('Wiener/Toolbox (nsr)');
 figure, imshow([rl_out rl_out_t]), title('RL/Toolbox');
