@@ -32,11 +32,12 @@ w_out_t = deconvwnr(yout, k);
 
 % RL 
 rl_out = RL(K, yout, max_iter);
+rl_ba_out = RL_BA(K, yout, max_iter);
 rl_out_t = deconvlucy(yout, k, max_iter);
 
 % Display the results 
 figure, imshow([w_out w_out_t]), title('Wiener/Toolbox');
-figure, imshow([rl_out rl_out_t]), title('RL/Toolbox');
+figure, imshow([rl_out rl_ba_out rl_out_t]), title('RL/Toolbox');
 
 
 % With noise 
@@ -62,9 +63,10 @@ w_out_nsr_t = deconvwnr(yout, k, nsr);
 
 % RL 
 rl_out = RL(K, yout, max_iter);
+rl_ba_out = RL_BA(K, yout, max_iter);
 rl_out_t = deconvlucy(yout, k, max_iter);
 
 % Display the results 
 figure, imshow([w_out w_out_t]), title('Wiener/Toolbox');
 figure, imshow([w_out_nsr w_out_nsr_t]), title('Wiener/Toolbox (nsr)');
-figure, imshow([rl_out rl_out_t]), title('RL/Toolbox');
+figure, imshow([rl_out rl_ba_out rl_out_t]), title('RL/Toolbox');
