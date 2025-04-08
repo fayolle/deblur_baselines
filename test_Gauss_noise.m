@@ -26,11 +26,7 @@ figure, imshow([xin yout]), title('Input/Blurred and noisy');
 max_iter = 100; 
 
 % Wiener 
-signal_var = var(yout(:));
-NSR = estimate_noise(yout)^2/signal_var;
-H = psf2otf(k, size(xin));
-Hconj = conj(H);
-w_out = real(ifft2((Hconj./(Hconj.*H + NSR)).*fft2(yout)));
+w_out = Wiener(K, yout);
 
 % ISRA 
 isra_out = ISRA(f, yout, max_iter);
