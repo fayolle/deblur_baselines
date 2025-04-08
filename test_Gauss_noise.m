@@ -23,7 +23,7 @@ F = @(x) imnoise(f(x), 'gaussian', noise_mean, noise_var);
 yout = F(xin);
 figure, imshow([xin yout]), title('Input/Blurred and noisy');
 
-max_iter = 100; 
+max_iter = 500; 
 
 % Wiener 
 w_out = Wiener(K, yout);

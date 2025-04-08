@@ -16,7 +16,7 @@ f = @(x) real(ifft2(fft2(x).*K));
 yout = f(xin);
 figure, imshow([xin yout]), title('Input/Blurred');
 
-max_iter = 100; 
+max_iter = 500; 
 
 % Wiener 
 w_out = Wiener(K, yout);
